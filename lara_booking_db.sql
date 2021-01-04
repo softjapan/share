@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `bk_bookings` (
   PRIMARY KEY (`id`),
   KEY `bookings_user_id_foreign` (`user_id`),
   KEY `bookings_service_id_foreign` (`service_id`),
-  CONSTRAINT `bookings_service_id_foreign` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `bookings_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+  CONSTRAINT `bookings_service_id_foreign` FOREIGN KEY (`service_id`) REFERENCES `bk_services` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bookings_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `bk_users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- テーブル lara_booking_db.bookings: ~8 rows (約) のデータをダンプしています
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `bk_bookings_details` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `bookings_details_booking_id_foreign` (`booking_id`),
-  CONSTRAINT `bookings_details_booking_id_foreign` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`id`) ON DELETE CASCADE
+  CONSTRAINT `bookings_details_booking_id_foreign` FOREIGN KEY (`booking_id`) REFERENCES `bk_bookings` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- テーブル lara_booking_db.bookings_details: ~9 rows (約) のデータをダンプしています
@@ -283,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `bk_payment_settings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `payment_settings_currency_id_foreign` (`currency_id`),
-  CONSTRAINT `payment_settings_currency_id_foreign` FOREIGN KEY (`currency_id`) REFERENCES `currencies` (`id`) ON DELETE CASCADE
+  CONSTRAINT `payment_settings_currency_id_foreign` FOREIGN KEY (`currency_id`) REFERENCES `bk_currencies` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- テーブル lara_booking_db.payment_settings: ~0 rows (約) のデータをダンプしています
@@ -324,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `bk_schedule` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `schedule_service_id_foreign` (`service_id`),
-  CONSTRAINT `schedule_service_id_foreign` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE CASCADE
+  CONSTRAINT `schedule_service_id_foreign` FOREIGN KEY (`service_id`) REFERENCES `bk_services` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- テーブル lara_booking_db.schedule: ~0 rows (約) のデータをダンプしています
@@ -400,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `bk_transactions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `transactions_user_id_foreign` (`user_id`),
-  CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+  CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `bk_users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- テーブル lara_booking_db.transactions: ~9 rows (約) のデータをダンプしています
@@ -444,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `bk_user_chat_messages` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_chat_messages_user_id_foreign` (`user_id`),
-  CONSTRAINT `user_chat_messages_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+  CONSTRAINT `user_chat_messages_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `bk_users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- テーブル lara_booking_db.bk_user_chat_messages: ~63 rows (約) のデータをダンプしています
